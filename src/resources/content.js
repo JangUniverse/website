@@ -1,16 +1,16 @@
 import { Logo } from "@once-ui-system/core";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Jang",
+  lastName: "Universe",
   get name() {
-    return `${this.firstName} ${this.lastName}`;
+    return `${this.firstName}${this.lastName}`;
   },
-  role: "Design Engineer",
+  role: "HSHS 33rd, Empty Stack developer",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  email: "me@JangUniverse.dev",
+  location: "Asia/Seoul", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["Korean"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
@@ -30,17 +30,12 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "github.com/JangUniverse",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://www.linkedin.com/JangUniverse",
   },
   {
     name: "Email",
@@ -87,12 +82,17 @@ const about = {
   },
   intro: {
     display: true,
-    title: "Introduction",
+    title: "소개",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        <strong>안녕하세요. 한성과학고등학교 학생 장우주입니다. </strong>
+        분야를 불문하고 다양한 기술 스택을 쌓기 위해 노력하고 있으며, 최대한의
+        <p>
+          노력을 통해 자신만의 프로그램을 만들고 문제를 해결해나가는 것을 좋아합니다.
+        </p>
+        <p>
+          앞으로는 AI 엔지니어로서 AI-based OS를 제작하는 것이 목표입니다.
+        </p>
       </>
     ),
   },
@@ -144,15 +144,33 @@ const about = {
   },
   studies: {
     display: true, // set to false to hide this section
-    title: "Studies",
+    title: "학력",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "한성과학고등학교(HSHS)",
+        timeframe: "2024-",
+        description: <>기초적인 수학, 과학, 정보 교과 학습과 다양한 팀 프로젝트 활동을 수행하였습니다.</>,
+        images: [
+          {
+            src: "/images/intro/hshs.png", // imgaes → images로 수정
+            alt: "한성과학고등학교 로고",
+            width : 50,
+            height : 50
+          }
+        ],
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "KAIST IP-CEO",
+        timeframe: "2022-2023",
+        description: <>지적재산권 및 벤처에 관한 내용을 학습하였으며, 관련 아이디어 제시 방법을 터득했습니다.</>,
+        images: [
+          {
+            src: "/images/intro/kaist.png",
+            alt: "KAIST IP-CEO 로고",
+            width: 50,
+            height: 50
+          }
+        ]
       },
     ],
   },
