@@ -14,6 +14,7 @@ import {
 } from "@once-ui-system/core";
 import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
+import TechSkill from "@/components/about/TechSkill";
 import styles from "@/components/about/about.module.scss";
 import React from "react";
 
@@ -45,10 +46,16 @@ export default function About() {
       items: about.studies.institutions.map((institution) => institution.name),
     },
     {
-      title: about.technical.title,
-      display: about.technical.display,
-      items: about.technical.skills.map((skill) => skill.title),
+      title: about.software.title,
+      display: about.software.display,
+      items: about.software.skills.map((skill) => skill.title),
     },
+    {
+      title: about.language.title,
+      display: about.language.display,
+      items: about.language.skills.map((skill) => skill.title)
+    }
+    
   ];
   return (
     <Column maxWidth="m">
@@ -96,8 +103,8 @@ export default function About() {
             </Flex>
             {person.languages.length > 0 && (
               <Flex wrap gap="8">
-                {person.languages.map((language, index) => (
-                  <Tag key={`language-${index}`} size="l">
+                {person.languages.map(language => (
+                  <Tag key={`language-${language}`} size="l">
                     {language}
                   </Tag>
                 ))}
@@ -128,14 +135,6 @@ export default function About() {
                 marginBottom="m"
                 vertical="center"
               >
-                <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
-                <Flex paddingX="8">Schedule a call</Flex>
-                <IconButton
-                  href={about.calendar.link}
-                  data-border="rounded"
-                  variant="secondary"
-                  icon="chevronRight"
-                />
               </Flex>
             )}
             <Heading className={styles.textAlign} variant="display-strong-xl">
@@ -151,9 +150,9 @@ export default function About() {
             {social.length > 0 && (
               <Flex className={styles.blockAlign} paddingTop="20" paddingBottom="8" gap="8" wrap horizontal="center" fitWidth data-border="rounded">
                 {social.map(
-                  (item) =>
+                  item =>
                     item.link && (
-                        <React.Fragment key={item.name}>
+                        <React.Fragment key={`social-${item.name}-${item}`}>
                             <Button
                                 className="s-flex-hide"
                                 href={item.link}
@@ -189,8 +188,8 @@ export default function About() {
                 {about.work.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
-                {about.work.experiences.map((experience, index) => (
-                  <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
+                {about.work.experiences.map(experience => (
+                  <Column key={`${experience.company}-${experience.role}-${experience}`} fillWidth>
                     <Flex fillWidth horizontal="space-between" vertical="end" marginBottom="4">
                       <Text id={experience.company} variant="heading-strong-l">
                         {experience.company}
@@ -207,7 +206,7 @@ export default function About() {
                         <Text
                           as="li"
                           variant="body-default-m"
-                          key={`${experience.company}-${index}`}
+                          key={`${experience.company}-achievement-${experience}`}
                         >
                           {achievement}
                         </Text>
@@ -215,9 +214,9 @@ export default function About() {
                     </Column>
                     {experience.images.length > 0 && (
                       <Flex fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
-                        {experience.images.map((image, index) => (
+                        {experience.images.map((image) => (
                           <Flex
-                            key={`${experience.company}-image-${index}`}
+                            key={`${experience.company}-image-${image}`}
                             border="neutral-medium"
                             radius="m"
                             //@ts-ignore
@@ -251,8 +250,8 @@ export default function About() {
                 {about.studies.title}
               </Heading>
               <Column fillWidth gap="l" marginBottom="40">
-                {about.studies.institutions.map((institution, index) => (
-                  <Column key={`${institution.name}-${index}`} fillWidth gap="4">
+                {about.studies.institutions.map((institution) => (
+                  <Column key={`${institution.name}-${institution}`} fillWidth gap="4">
                     <Flex fillWidth horizontal="space-between" vertical="end" marginBottom="4">
                       <Flex vertical="center" gap="m">
                         {institution.images?.length > 0 && (
@@ -281,42 +280,50 @@ export default function About() {
             </>
           )}
 
-          {about.technical.display && (
+          {about.software.display && (
             <>
               <Heading
                 as="h2"
-                id={about.technical.title}
+                id={about.software.title}
                 variant="display-strong-s"
                 marginBottom="40"
               >
-                {about.technical.title}
+                {about.software.title}
               </Heading>
               <Flex fillWidth gap="16" wrap horizontal="start">
-                {about.technical.skills.map((skill, index) => {
-                  console.log('Technical skill key:', `${skill.title}-${index}`, skill);
-                  return (
-                  <Flex
-                    key={`technical-${skill.title}-${index}`}
-                    padding="16"
-                    border="neutral-medium"
-                    borderStyle="solid"
-                    radius="m"
-                    vertical="center"
-                    horizontal="center"
-                    minWidth="80"
-                    minHeight="80"
-                    background="neutral-alpha-weak"
-                    className="tech-item-hover"
-                  >
-                    <Avatar
-                      src={skill.logo}
-                      aria-label={skill.alt}
-                      size="l"
-                      style={{ backgroundColor: 'transparent' }}
-                    />
-                  </Flex>
-                  );
-                })}
+                {about.software.skills.map((skill, index) => (
+                   <TechSkill
+                     key={`tech-skill-${skill.title}-${index}`}
+                     title={skill.title}
+                     logo={skill.logo}
+                     alt={skill.alt}
+                     experience={skill.experience}
+                   />
+                 ))}
+              </Flex>
+            </>
+          )}
+          <div style={{ marginBottom: "var(--static-space-32)" }} />
+          {about.language.display && (
+            <>
+              <Heading
+                as="h2"
+                id={about.language.title}
+                variant="display-strong-s"
+                marginBottom="40"
+              >
+                {about.language.title}
+              </Heading>
+              <Flex fillWidth gap="16" wrap horizontal="start">
+                {about.language.skills.map((skill, index) => (
+                   <TechSkill
+                     key={`tech-skill-${skill.title}-${index}`}
+                     title={skill.title}
+                     logo={skill.logo}
+                     alt={skill.alt}
+                     experience={skill.experience}
+                   />
+                 ))}
               </Flex>
             </>
           )}

@@ -58,9 +58,9 @@ const home = {
   },
   subline: (
     <>
-      I'm Selene, a design engineer at <Logo icon="/trademarks/wordmark-dark.svg" style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
+      I'm JangUniverse(WooJoo), a student at Hansung Science High School. where I craft intuitive
       <br /> user experiences. After hours, I build my own projects.
-    </>
+    </>//TODO
   ),
 };
 
@@ -172,52 +172,116 @@ const about = {
       },
     ],
   },
-  technical: {
+  software: {
     display: true, // set to false to hide this section
-    title: "기술 스택",
+    title: "소프트웨어 스택",
     skills: [
+      {
+        title: "Android Studio",
+        logo: "/images/tech/AndroidStudio-Dark.svg", // 로고 이미지 경로
+        alt: "Android Studio",
+        experience: 90, // 경험 수준 (0-100)
+      },
+      {
+        title: "Arduino",
+        logo: "/images/tech/Arduino.svg", // 로고 이미지 경로
+        alt: "Arduino",
+        experience: 80,
+      },
+      {
+        title: "Blender",
+        logo: "/images/tech/Blender-Dark.svg", // 로고 이미지 경로
+        alt: "React",
+        experience: 65,
+      },
       {
         title: "Figma",
         logo: "/images/tech/figma.svg", // 로고 이미지 경로
         alt: "Figma",
+        experience: 90,
+      },
+      {
+        title: "GCP",
+        logo: "/images/tech/GCP-Dark.svg", // 로고 이미지 경로
+        alt: "GCP",
+        experience: 95,
+      },
+      {
+        title: "Git",
+        logo: "/images/tech/Git.svg", // 로고 이미지 경로
+        alt: "Git",
+        experience: 80,
       },
       {
         title: "Next.js",
-        logo: "/images/tech/nextjs.svg", // 로고 이미지 경로
+        logo: "/images/tech/NextJS-Dark.svg", // 로고 이미지 경로
         alt: "Next.js",
+        experience: 70,
       },
       {
-        title: "React",
-        logo: "/images/tech/react.svg", // 로고 이미지 경로
-        alt: "React",
+        title: "Photoshop",
+        logo: "/images/tech/Photoshop.svg", // 로고 이미지 경로
+        alt: "Photoshop",
+        experience: 85,
       },
       {
-        title: "TypeScript",
-        logo: "/images/tech/typescript.svg", // 로고 이미지 경로
-        alt: "TypeScript",
+        title: "Premire Pro",
+        logo: "/images/tech/Premiere.svg", // 로고 이미지 경로
+        alt: "Premire Pro",
+        experience: 80,
       },
       {
-        title: "JavaScript",
-        logo: "/images/tech/javascript.svg", // 로고 이미지 경로
-        alt: "JavaScript",
-      },
-      {
-        title: "Node.js",
-        logo: "/images/tech/nodejs.svg", // 로고 이미지 경로
-        alt: "Node.js",
-      },
-      {
-        title: "HTML5",
-        logo: "/images/tech/html5.svg", // 로고 이미지 경로
-        alt: "HTML5",
-      },
-      {
-        title: "CSS3",
-        logo: "/images/tech/css3.svg", // 로고 이미지 경로
-        alt: "CSS3",
+        title: "Pytorch",
+        logo: "/images/tech/PyTorch-Dark.svg", // 로고 이미지 경로
+        alt: "Pytorch",
+        experience: 90,
       },
     ],
   },
+  language: {
+    display: true, // set to false to hide this section
+    title: "언어 스택",
+    skills: [
+      {
+        title: "Bash",
+        logo: "/images/lang/Bash-Dark.svg", // 로고 이미지 경로
+        alt: "Bash",
+        experience: 90, // 경험 수준 (0-100)
+      },
+      {
+        title: "C++",
+        logo: "/images/lang/CPP.svg", // 로고 이미지 경로
+        alt: "C++",
+        experience: 95,
+      },
+      {
+        title: "C#",
+        logo: "/images/lang/CS.svg", // 로고 이미지 경로
+        alt: "C#",
+        experience: 75,
+      },
+      {
+        title: "SQL",
+        logo: "/images/lang/PostgreSQL-Dark.svg", // 로고 이미지 경로
+        alt: "SQL",
+        experience: 80,
+      },
+      {
+        title: "Python",
+        logo: "/images/lang/Python-Dark.svg", // 로고 이미지 경로
+        alt: "Python",
+        experience: 90,
+      },
+      {
+        title: "R",
+        logo: "/images/lang/R-Dark.svg", // 로고 이미지 경로
+        alt: "R",
+        experience: 80,
+      }
+      
+    ],
+  },
+  
 };
 
 const blog = {
