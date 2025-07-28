@@ -52,3 +52,11 @@
   --scheme-neutral-600-50: rgba(137,152,159,0.5);
   /*
 }*/
+
+.tech-item-hover {
+  transition: background-color 0.2s ease;
+}
+
+.tech-item-hover:hover {
+  background-color: var(--brand-alpha-weak, rgba(111,148,241,0.1)) !important;
+}

@@ -85,19 +85,17 @@ const about = {
     title: "소개",
     description: (
       <>
-        <strong>안녕하세요. 한성과학고등학교 학생 장우주입니다. </strong>
+        <strong>안녕하세요. 한성과학고등학교 학생 장우주입니다.</strong>
+        <br />
         분야를 불문하고 다양한 기술 스택을 쌓기 위해 노력하고 있으며, 최대한의
-        <p>
-          노력을 통해 자신만의 프로그램을 만들고 문제를 해결해나가는 것을 좋아합니다.
-        </p>
-        <p>
-          앞으로는 AI 엔지니어로서 AI-based OS를 제작하는 것이 목표입니다.
-        </p>
+        노력을 통해 자신만의 프로그램을 만들고 문제를 해결해나가는 것을 좋아합니다.
+        <br />
+        앞으로는 AI 엔지니어로서 AI-based OS를 제작하는 것이 목표입니다.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: false, // set to false to hide this section
     title: "Work Experience",
     experiences: [
       {
@@ -176,39 +174,47 @@ const about = {
   },
   technical: {
     display: true, // set to false to hide this section
-    title: "Technical skills",
+    title: "기술 스택",
     skills: [
       {
         title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        logo: "/images/tech/figma.svg", // 로고 이미지 경로
+        alt: "Figma",
       },
       {
         title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        logo: "/images/tech/nextjs.svg", // 로고 이미지 경로
+        alt: "Next.js",
+      },
+      {
+        title: "React",
+        logo: "/images/tech/react.svg", // 로고 이미지 경로
+        alt: "React",
+      },
+      {
+        title: "TypeScript",
+        logo: "/images/tech/typescript.svg", // 로고 이미지 경로
+        alt: "TypeScript",
+      },
+      {
+        title: "JavaScript",
+        logo: "/images/tech/javascript.svg", // 로고 이미지 경로
+        alt: "JavaScript",
+      },
+      {
+        title: "Node.js",
+        logo: "/images/tech/nodejs.svg", // 로고 이미지 경로
+        alt: "Node.js",
+      },
+      {
+        title: "HTML5",
+        logo: "/images/tech/html5.svg", // 로고 이미지 경로
+        alt: "HTML5",
+      },
+      {
+        title: "CSS3",
+        logo: "/images/tech/css3.svg", // 로고 이미지 경로
+        alt: "CSS3",
       },
     ],
   },

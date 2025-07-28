@@ -97,7 +97,7 @@ export default function About() {
             {person.languages.length > 0 && (
               <Flex wrap gap="8">
                 {person.languages.map((language, index) => (
-                  <Tag key={language} size="l">
+                  <Tag key={`language-${index}`} size="l">
                     {language}
                   </Tag>
                 ))}
@@ -156,7 +156,6 @@ export default function About() {
                         <React.Fragment key={item.name}>
                             <Button
                                 className="s-flex-hide"
-                                key={item.name}
                                 href={item.link}
                                 prefixIcon={item.icon}
                                 label={item.name}
@@ -167,7 +166,6 @@ export default function About() {
                             <IconButton
                                 className="s-flex-show"
                                 size="l"
-                                key={`${item.name}-icon`}
                                 href={item.link}
                                 icon={item.icon}
                                 variant="secondary"
@@ -219,7 +217,7 @@ export default function About() {
                       <Flex fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
                         {experience.images.map((image, index) => (
                           <Flex
-                            key={index}
+                            key={`${experience.company}-image-${index}`}
                             border="neutral-medium"
                             radius="m"
                             //@ts-ignore
@@ -293,42 +291,33 @@ export default function About() {
               >
                 {about.technical.title}
               </Heading>
-              <Column fillWidth gap="l">
-                {about.technical.skills.map((skill, index) => (
-                  <Column key={`${skill}-${index}`} fillWidth gap="4">
-                    <Text id={skill.title} variant="heading-strong-l">{skill.title}</Text>
-                    <Text variant="body-default-m" onBackground="neutral-weak">
-                      {skill.description}
-                    </Text>
-                    {skill.images && skill.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image, index) => (
-                          <Flex
-                            key={index}
-                            border="neutral-medium"
-                            radius="m"
-                            //@ts-ignore
-                            minWidth={image.width}
-                            //@ts-ignore
-                            height={image.height}
-                          >
-                            <Media
-                              enlarge
-                              radius="m"
-                              //@ts-ignore
-                              sizes={image.width.toString()}
-                              //@ts-ignore
-                              alt={image.alt}
-                              //@ts-ignore
-                              src={image.src}
-                            />
-                          </Flex>
-                        ))}
-                      </Flex>
-                    )}
-                  </Column>
-                ))}
-              </Column>
+              <Flex fillWidth gap="16" wrap horizontal="start">
+                {about.technical.skills.map((skill, index) => {
+                  console.log('Technical skill key:', `${skill.title}-${index}`, skill);
+                  return (
+                  <Flex
+                    key={`technical-${skill.title}-${index}`}
+                    padding="16"
+                    border="neutral-medium"
+                    borderStyle="solid"
+                    radius="m"
+                    vertical="center"
+                    horizontal="center"
+                    minWidth="80"
+                    minHeight="80"
+                    background="neutral-alpha-weak"
+                    className="tech-item-hover"
+                  >
+                    <Avatar
+                      src={skill.logo}
+                      aria-label={skill.alt}
+                      size="l"
+                      style={{ backgroundColor: 'transparent' }}
+                    />
+                  </Flex>
+                  );
+                })}
+              </Flex>
             </>
           )}
         </Column>
