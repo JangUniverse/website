@@ -15,7 +15,7 @@ const person = {
 
 const newsletter = {
   display: true,
-  title: <>{person.firstName}{person.lastName}의 블로그를 구독하세요</>,
+  title: <>블로그를 구독하세요</>,
   description: (
     <>
     학교 생활, 기술 학습, 프로젝트 경험 등의 블로그가 매우 불규칙적으로 개시됩니다. <br />
@@ -50,7 +50,8 @@ const home = {
   label: "홈",
   title: `${person.name}`,
   description: `${person.name}'s personal website`,
-  headline: <>Life is a tree, nodes are moments.</>,
+  headline: <>Life is a tree,<br />
+              nodes are moments.</>,
   featured: {
     display: true,
     title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
@@ -58,7 +59,7 @@ const home = {
   },
   subline: (
     <>
-    한성과학고등학교에 재학중인 장우주입니다. <br />
+    한성과학고등학교 학생 장우주입니다. <br />
     AI Engineer가 되기 위해 다양한 프로그램, 프로젝트를 시도하고 있습니다.
     </>
   ),
