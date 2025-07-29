@@ -1,17 +1,11 @@
 "use client";
 
 import { mailchimp } from "@/resources";
-import { Button, Flex, Heading, Input, Text, Background, Column } from "@once-ui-system/core";
+import { Button, Flex, Heading, Input, Text, Background, Column, useToast } from "@once-ui-system/core";
 import { opacity, SpacingToken } from "@once-ui-system/core";
 import { useState } from "react";
 
-function debounce<T extends (...args: any[]) => void>(func: T, delay: number): T {
-  let timeout: ReturnType<typeof setTimeout>;
-  return ((...args: Parameters<T>) => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func(...args), delay);
-  }) as T;
-}
+
 
 type NewsletterProps = {
   display: boolean;
@@ -21,37 +15,64 @@ type NewsletterProps = {
 
 export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
   const [email, setEmail] = useState<string>("");
-  const [error, setError] = useState<string>("");
-  const [touched, setTouched] = useState<boolean>(false);
+  const { addToast } = useToast();
 
-  const validateEmail = (email: string): boolean => {
-    if (email === "") {
-      return true;
-    }
-
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailPattern.test(email);
-  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setEmail(value);
-
-    if (!validateEmail(value)) {
-      setError("Please enter a valid email address.");
-    } else {
-      setError("");
-    }
   };
 
-  const debouncedHandleChange = debounce(handleChange, 2000);
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
-  const handleBlur = () => {
-    setTouched(true);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email.trim()) {
+      addToast({
+        variant: 'danger',
+        message: '이메일을 입력해주세요.'
+      });
+      return;
+    }
+
     if (!validateEmail(email)) {
-      setError("Please enter a valid email address.");
+      addToast({
+        variant: 'danger',
+        message: '올바른 이메일 형식을 입력해주세요.'
+      });
+      return;
+    }
+
+    try {
+      // 실제 Mailchimp API 호출
+      const formData = new FormData();
+      formData.append('EMAIL', email);
+      
+      const response = await fetch(mailchimp.action, {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors' // Mailchimp CORS 정책 때문에 필요
+      });
+      
+      // no-cors 모드에서는 응답을 확인할 수 없으므로 성공으로 간주
+      addToast({
+        variant: 'success',
+        message: '구독이 완료되었습니다! 감사합니다.'
+      });
+      setEmail('');
+    } catch (error) {
+      addToast({
+        variant: 'danger',
+        message: '구독 중 오류가 발생했습니다. 다시 시도해주세요.'
+      });
     }
   };
+
+
 
   return (
     <Column
@@ -116,7 +137,7 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
           maxWidth: "var(--responsive-width-xs)",
         }}
         wrap="balance"
-        marginBottom="l"
+        marginBottom="l"    
         onBackground="neutral-medium"
       >
         {newsletter.description}
@@ -127,61 +148,30 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
           display: "flex",
           justifyContent: "center",
         }}
-        action={mailchimp.action}
-        method="post"
-        id="mc-embedded-subscribe-form"
-        name="mc-embedded-subscribe-form"
+        onSubmit={handleSubmit}
       >
-        <Flex id="mc_embed_signup_scroll" fillWidth maxWidth={24} mobileDirection="column" gap="8">
+        <Flex fillWidth maxWidth={24} mobileDirection="column" gap="8">
           <Input
-            formNoValidate
-            id="mce-EMAIL"
-            name="EMAIL"
-            type="email"
-            placeholder="Email"
-            required
-            onChange={(e) => {
-              if (error) {
-                handleChange(e);
-              } else {
-                debouncedHandleChange(e);
-              }
-            }}
-            onBlur={handleBlur}
-            errorMessage={error}
-          />
-          <div style={{ display: "none" }}>
-            <input
-              type="checkbox"
-              readOnly
-              name="group[3492][1]"
-              id="mce-group[3492]-3492-0"
-              value=""
-              checked
-            />
-          </div>
-          <div id="mce-responses" className="clearfalse">
-            <div className="response" id="mce-error-response" style={{ display: "none" }}></div>
-            <div className="response" id="mce-success-response" style={{ display: "none" }}></div>
-          </div>
-          <div aria-hidden="true" style={{ position: "absolute", left: "-5000px" }}>
-            <input
-              type="text"
-              readOnly
-              name="b_c412c76331c5c7ad3f6203ded_ae5206e750"
-              tabIndex={-1}
-              value=""
-            />
-          </div>
+             id = "email"
+             type="text"
+             placeholder="Email"
+             onChange={handleChange}
+             value={email}
+             />
           <div className="clear">
             <Flex height="48" vertical="center">
-              <Button id="mc-embedded-subscribe" value="Subscribe" size="m" fillWidth>
+              <Button 
+                type="submit"
+                size="m" 
+                fillWidth
+              >
                 구독하기
               </Button>
             </Flex>
           </div>
         </Flex>
       </form>
+
     </Column>
   );
 };

@@ -47,7 +47,7 @@ const social = [
 const home = {
   path: "/",
   image: "/images/og/home.jpg",
-  label: "Home",
+  label: "홈",
   title: `${person.name}`,
   description: `${person.name}'s personal website`,
   headline: <>Life is a tree, nodes are moments.</>,
@@ -66,9 +66,9 @@ const home = {
 
 const about = {
   path: "/about",
-  label: "About",
+  label: "소개",
   title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  description: `about ${person.name}, ${person.role}`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -286,7 +286,7 @@ const about = {
 
 const blog = {
   path: "/blog",
-  label: "Blog",
+  label: "블로그",
   title: "Writing about design and tech...",
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
@@ -295,7 +295,7 @@ const blog = {
 
 const work = {
   path: "/work",
-  label: "Work",
+  label: "작업",
   title: `Projects – ${person.name}`,
   description: `Design and dev projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
@@ -304,7 +304,7 @@ const work = {
 
 const gallery = {
   path: "/gallery",
-  label: "Gallery",
+  label: "갤러리",
   title: `Photo gallery – ${person.name}`,
   description: `A photo collection by ${person.name}`,
   // Images by https://lorant.one
