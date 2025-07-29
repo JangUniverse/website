@@ -128,7 +128,7 @@ const effects = {
 };
 
 const mailchimp = {
-  action: "https://url/subscribe/post?parameters",
+  action: "https://gmail.us22.list-manage.com/subscribe/post?u=c412c76331c5c7ad3f6203ded&id=ae5206e750&f_id=00e3c2e1f0",
   effects: {
     mask: {
       cursor: true,

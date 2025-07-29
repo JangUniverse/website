@@ -15,11 +15,11 @@ const person = {
 
 const newsletter = {
   display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
+  title: <>{person.firstName}{person.lastName}의 블로그를 구독하세요</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+    학교 생활, 기술 학습, 프로젝트 경험 등의 블로그가 매우 불규칙적으로 개시됩니다. <br />
+    불규칙한 블로그를 불가피하게 놓치지 않도록 구독해주시면 감사하겠습니다.
     </>
   ),
 };
@@ -48,9 +48,9 @@ const home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  title: `${person.name}`,
+  description: `${person.name}'s personal website`,
+  headline: <>Life is a tree, nodes are moments.</>,
   featured: {
     display: true,
     title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
@@ -58,9 +58,9 @@ const home = {
   },
   subline: (
     <>
-      I'm JangUniverse(WooJoo), a student at Hansung Science High School. where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
-    </>//TODO
+    한성과학고등학교에 재학중인 장우주입니다. <br />
+    AI Engineer가 되기 위해 다양한 프로그램, 프로젝트를 시도하고 있습니다.
+    </>
   ),
 };
 
@@ -351,6 +351,7 @@ const gallery = {
       orientation: "vertical",
     },
   ],
+
 };
 
 export { person, social, newsletter, home, about, blog, work, gallery };

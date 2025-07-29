@@ -168,7 +168,7 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
             <input
               type="text"
               readOnly
-              name="b_c1a5a210340eb6c7bff33b2ba_0462d244aa"
+              name="b_c412c76331c5c7ad3f6203ded_ae5206e750"
               tabIndex={-1}
               value=""
             />
@@ -176,7 +176,7 @@ export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
           <div className="clear">
             <Flex height="48" vertical="center">
               <Button id="mc-embedded-subscribe" value="Subscribe" size="m" fillWidth>
-                Subscribe
+                구독하기
               </Button>
             </Flex>
           </div>
