@@ -351,8 +351,124 @@ const gallery = {
       alt: "image",
       orientation: "vertical",
     },
+    
   ],
 
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+const concept = {
+    path: "/concept",
+    label: "컨셉",
+    title: `Concept – ${person.name}`,
+    description: `${person.name}의 디자인 컨셉과 브랜드 아이덴티티`,
+    
+    // 컨셉 설명
+    conceptDescription: {
+      title: "Brand Identity",
+      subtitle: "개발자로서의 정체성과 철학",
+      content: "기술을 통해 세상을 더 나은 곳으로 만들고자 하는 개발자입니다. 코드와 디자인의 조화를 통해 사용자에게 가치를 전달하는 것을 추구합니다."
+    },
+    
+    // 브랜드 컬러
+    brandColors: [
+      { name: "Shifted Ruby", color: "#ff3b57", description: "주요 브랜드 컬러" },
+      { name: "Shifted Gold", color: "#ffb717", description: "강조 및 액센트" },
+      { name: "Shifted Sunshade", color: "#ffa71a", description: "따뜻한 보조 컬러" },
+      { name: "Shifted Midnight", color: "#0b1b38", description: "다크 테마 베이스" },
+      { name: "Shifted Gray", color: "#8a8f95", description: "중성 컬러" },
+      { name: "Tech Blue", color: "#3b82f6", description: "기술적 요소" },
+    ],
+    
+    // 로고 및 브랜딩
+    branding: {
+      display: true,
+      title: "Visual Identity",
+      description: "개발자로서의 정체성을 시각적으로 표현한 브랜딩 요소들입니다.",
+      elements: [
+        {
+          name: "Logo",
+          description: "JangUniverse 브랜드를 대표하는 로고",
+          type: "primary"
+        },
+        {
+          name: "Typography",
+          description: "Geist 폰트 패밀리를 기반으로 한 일관된 타이포그래피",
+          type: "secondary"
+        },
+        {
+          name: "Color Scheme",
+          description: "따뜻하면서도 전문적인 느낌의 컬러 팔레트",
+          type: "accent"
+        }
+      ]
+    },
+    
+    // SNS 링크
+    socialLinks: [
+      { 
+        platform: "GitHub", 
+        username: "JangUniverse", 
+        url: "https://github.com/JangUniverse",
+        description: "오픈소스 프로젝트와 코드 저장소",
+        category: "development"
+      },
+      { 
+        platform: "Email", 
+        username: "me@JangUniverse.dev", 
+        url: "mailto:me@JangUniverse.dev",
+        description: "개인 연락처",
+        category: "contact"
+      },
+      { 
+        platform: "LinkedIn", 
+        username: "장우주", 
+        url: "https://linkedin.com/in/janguniverse",
+        description: "전문적인 네트워킹과 경력 정보",
+        category: "professional"
+      },
+      { 
+        platform: "Blog", 
+        username: "JangUniverse Blog", 
+        url: "https://janguniverse.dev/blog",
+        description: "기술 블로그 및 학습 기록",
+        category: "content"
+      },
+      { 
+        platform: "Discord", 
+        username: "janguniverse", 
+        url: "https://discord.com/users/janguniverse",
+        description: "실시간 소통 및 커뮤니티 활동",
+        category: "social"
+      },
+      { 
+        platform: "Instagram", 
+        username: "@janguniverse", 
+        url: "https://instagram.com/janguniverse",
+        description: "일상과 작업 과정 공유",
+        category: "social"
+      }
+    ],
+    // Self Description 섹션
+    selfDescription: {
+      title: "JangUniverse Brand Identity",
+      description: "창의적이고 혁신적인 개발자로서의 브랜드 아이덴티티를 표현합니다.",
+      images: [
+        {
+          url: "/images/concept/asdf.png",
+          alt: "JangUniverse 메인 로고",
+          description: "메인 브랜드 로고"
+        },
+        {
+          url: "/images/brand-icon.svg",
+          alt: "JangUniverse 아이콘",
+          description: "심볼 아이콘"
+        },
+        {
+          url: "/images/brand-wordmark.svg",
+          alt: "JangUniverse 워드마크",
+          description: "워드마크"
+        }
+      ]
+    }
+  }
+export { person, social, newsletter, home, about, blog, work, gallery, concept };
