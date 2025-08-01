@@ -379,30 +379,6 @@ const concept = {
       { name: "Tech Blue", color: "#3b82f6", description: "기술적 요소" },
     ],
     
-    // 로고 및 브랜딩
-    branding: {
-      display: true,
-      title: "Visual Identity",
-      description: "개발자로서의 정체성을 시각적으로 표현한 브랜딩 요소들입니다.",
-      elements: [
-        {
-          name: "Logo",
-          description: "JangUniverse 브랜드를 대표하는 로고",
-          type: "primary"
-        },
-        {
-          name: "Typography",
-          description: "Geist 폰트 패밀리를 기반으로 한 일관된 타이포그래피",
-          type: "secondary"
-        },
-        {
-          name: "Color Scheme",
-          description: "따뜻하면서도 전문적인 느낌의 컬러 팔레트",
-          type: "accent"
-        }
-      ]
-    },
-    
     // SNS 링크
     socialLinks: [
       { 
@@ -450,8 +426,9 @@ const concept = {
     ],
     // Self Description 섹션
     selfDescription: {
-      title: "JangUniverse Brand Identity",
-      description: "창의적이고 혁신적인 개발자로서의 브랜드 아이덴티티를 표현합니다.",
+      title: "JangUniverse",
+      nickname: <>"JangUniverse"는 제 이름 장우주에서 따 왔습니다. <br /> 우주가 영어로 "Universe"이고, Universe라는 글자가 주는 무한함이 마음에 들었기에 해당 닉네임을 사용하였습니다.</>,
+      logo: <>현재 사용하고 있는 로고는 심플하면서도 모던한 디자인을 추구합니다. <br /> 우주의 무한함과 창의성을 상징하는 요소들을 포함하여 브랜드 아이덴티티를 표현합니다.</>,
       images: [
         {
           url: "/images/concept/asdf.png",
@@ -459,14 +436,19 @@ const concept = {
           description: "메인 브랜드 로고"
         },
         {
-          url: "/images/brand-icon.svg",
-          alt: "JangUniverse 아이콘",
-          description: "심볼 아이콘"
+          url: "/images/avatar.jpg",
+          alt: "JangUniverse 프로필",
+          description: "프로필 이미지"
         },
         {
-          url: "/images/brand-wordmark.svg",
-          alt: "JangUniverse 워드마크",
-          description: "워드마크"
+          url: "/images/intro/hshs.png",
+          alt: "학업 관련 이미지",
+          description: "학업 배경"
+        },
+        {
+          url: "/images/intro/kaist.png",
+          alt: "KAIST 관련 이미지",
+          description: "대학 정보"
         }
       ]
     }

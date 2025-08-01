@@ -1,13 +1,11 @@
-import React from 'react';
 import {
-  Avatar,
   Column,
   Flex,
   Heading,
   Media,
-  Text,
+  Text
 } from "@once-ui-system/core";
-import { person } from "@/resources";
+import React from "react";
 
 interface SelfDescriptionImage {
   url: string;
@@ -17,54 +15,97 @@ interface SelfDescriptionImage {
 
 interface SelfDescriptionProps {
   title: string;
-  description: string;
+  nickname: React.ReactNode;
+  logo: React.ReactNode;
   images: SelfDescriptionImage[];
 }
 
-export default function SelfDescription({ title, description, images }: SelfDescriptionProps) {
+export default function SelfDescription({ title, nickname, logo, images }: SelfDescriptionProps) {
   return (
-    <Flex fillWidth mobileDirection="column" horizontal="center" gap="xl">
-      {/* 왼쪽 이미지 그리드 */}
-      <Column flex={2} gap="m">
-        <Flex wrap gap="m">
+    <Flex fillWidth gap="xl" paddingY="xl" mobileDirection="column">
+      {/* 왼쪽: Nickname과 Logo 박스들 */}
+      <Column gap="xl" paddingX="m" align="start" style={{ flex: '1' }}>
+        {/* Nickname 박스 */}
+        <Flex
+          radius="m"
+          padding="l"
+          fillWidth
+        >
+          <Column gap="m" align="start">
+            <Heading
+              as="h2"
+              variant="heading-strong-l"
+              onBackground="neutral-strong"
+              align="start"
+            >
+              Nickname
+            </Heading>
+            <Text
+              variant="body-default-l"
+              onBackground="neutral-medium"
+              align="start"
+            >
+              {nickname}
+            </Text>
+          </Column>
+        </Flex>
+        
+        {/* Logo 박스 */}
+        <Flex
+          radius="m"
+          padding="l"
+          fillWidth
+        >
+          <Column gap="m" align="start">
+            <Heading
+              as="h2"
+              variant="heading-strong-l"
+              onBackground="neutral-strong"
+              align="start"
+            >
+              Logo
+            </Heading>
+            <Text
+              variant="body-default-l"
+              onBackground="neutral-medium"
+              align="start"
+            >
+              {logo}
+            </Text>
+          </Column>
+        </Flex>
+      </Column>
+
+      {/* 오른쪽: 이미지 그리드 */}
+      <Column gap="m" paddingX="m" style={{ flex: '1' }}>
+        <Flex wrap gap="m" align="center">
           {images.map((image, index) => (
-            <Column key={index} gap="xs" style={{ width: '48%' }}>
+            <Column key={index} gap="xs" style={{ 
+              minWidth: '200px',
+              maxWidth: '300px',
+              flex: '1 1 calc(50% - 16px)'
+            }}>
               <Media
                 src={image.url}
                 alt={image.alt}
                 aspectRatio="1 / 1"
                 radius="m"
+                border="neutral-medium"
                 style={{
                   width: '100%',
                   objectFit: 'cover'
                 }}
               />
-              <Text size="s" variant="body" color="neutral-weak">
+              <Text 
+                variant="body-default-s" 
+                onBackground="neutral-weak"
+                align="center"
+              >
                 {image.description}
               </Text>
             </Column>
           ))}
         </Flex>
-      </Column>
-
-      {/* 오른쪽 텍스트 내용 */}
-      <Column flex={3} gap="m">
-        <Column gap="m">
-          <Heading
-            as="h1"
-            size="xl"
-            weight="strong"
-          >
-            {title}
-          </Heading>
-          <Text
-            size="l"
-            variant="body"
-            color="neutral-medium"
-          >
-            {description}
-          </Text>
-        </Column>
       </Column>
     </Flex>
   );

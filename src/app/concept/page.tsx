@@ -27,17 +27,17 @@ export default function ConceptPage() {
       maxWidth="xl" 
       direction="column" 
       gap="xl" 
-      alignItems="center"
+      align="center"
       fillWidth
     >
       <RevealFx
-        trigger="instant"
         translateY="4"
         style={{ width: '100%' }}
       >
         <SelfDescription
           title={concept.selfDescription.title}
-          description={concept.selfDescription.description}
+          nickname={concept.selfDescription.nickname}
+          logo={concept.selfDescription.logo}
           images={concept.selfDescription.images}
         />
       </RevealFx>
