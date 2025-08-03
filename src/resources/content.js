@@ -360,23 +360,15 @@ const concept = {
     path: "/concept",
     label: "컨셉",
     title: `Concept – ${person.name}`,
-    description: `${person.name}의 디자인 컨셉과 브랜드 아이덴티티`,
+    description: `${person.name}'s concept`,  
     
-    // 컨셉 설명
-    conceptDescription: {
-      title: "Brand Identity",
-      subtitle: "개발자로서의 정체성과 철학",
-      content: "기술을 통해 세상을 더 나은 곳으로 만들고자 하는 개발자입니다. 코드와 디자인의 조화를 통해 사용자에게 가치를 전달하는 것을 추구합니다."
-    },
     
     // 브랜드 컬러
     brandColors: [
-      { name: "Shifted Ruby", color: "#ff3b57", description: "주요 브랜드 컬러" },
-      { name: "Shifted Gold", color: "#ffb717", description: "강조 및 액센트" },
-      { name: "Shifted Sunshade", color: "#ffa71a", description: "따뜻한 보조 컬러" },
-      { name: "Shifted Midnight", color: "#0b1b38", description: "다크 테마 베이스" },
-      { name: "Shifted Gray", color: "#8a8f95", description: "중성 컬러" },
-      { name: "Tech Blue", color: "#3b82f6", description: "기술적 요소" },
+      { name: "JangUniverse Black", color: "#030303", R: 3, G: 3, B: 3 },
+      { name: "JangUniverse Blue", color: "#0F193B", R: 15, G: 25, B: 59 },
+      { name: "JangUniverse Grey", color: "#8C8C8C", R: 140, G: 140, B: 140 },
+      { name: "JangUniverse Pale", color: "#D8D8D8", R: 216, G: 216, B: 216 },
     ],
     
     // SNS 링크
@@ -385,70 +377,53 @@ const concept = {
         platform: "GitHub", 
         username: "JangUniverse", 
         url: "https://github.com/JangUniverse",
-        description: "오픈소스 프로젝트와 코드 저장소",
-        category: "development"
       },
       { 
         platform: "Email", 
         username: "me@JangUniverse.dev", 
         url: "mailto:me@JangUniverse.dev",
-        description: "개인 연락처",
-        category: "contact"
       },
       { 
         platform: "LinkedIn", 
         username: "장우주", 
         url: "https://linkedin.com/in/janguniverse",
-        description: "전문적인 네트워킹과 경력 정보",
-        category: "professional"
       },
       { 
         platform: "Blog", 
         username: "JangUniverse Blog", 
         url: "https://janguniverse.dev/blog",
-        description: "기술 블로그 및 학습 기록",
-        category: "content"
-      },
-      { 
-        platform: "Discord", 
-        username: "janguniverse", 
-        url: "https://discord.com/users/janguniverse",
-        description: "실시간 소통 및 커뮤니티 활동",
-        category: "social"
       },
       { 
         platform: "Instagram", 
         username: "@janguniverse", 
         url: "https://instagram.com/janguniverse",
-        description: "일상과 작업 과정 공유",
-        category: "social"
       }
     ],
     // Self Description 섹션
     selfDescription: {
       title: "JangUniverse",
-      nickname: <>"JangUniverse"는 제 이름 장우주에서 따 왔습니다. <br /> 우주가 영어로 "Universe"이고, Universe라는 글자가 주는 무한함이 마음에 들었기에 해당 닉네임을 사용하였습니다.</>,
-      logo: <>현재 사용하고 있는 로고는 심플하면서도 모던한 디자인을 추구합니다. <br /> 우주의 무한함과 창의성을 상징하는 요소들을 포함하여 브랜드 아이덴티티를 표현합니다.</>,
+      nickname: <>JangUniverse는 제 이름 장우주에서 따 왔습니다. <br /> 우주가 영어로 Universe이고, Universe라는 글자가 주는 무한함이 인상깊어 해당 닉네임을 사용하였습니다. <br/ >많은 사람이 제 이름을 처음 들으면 이 단어를 생각하기에, 닉네임으로 정한 것도 있습니다.</>,
+      logo: <>로고 배경은 어두운 심우주를, 가운데의 검은 원은 블랙홀을, 밝은 회색은 빨려들어가는 빛을 의미합니다. <br /> 블랙홀처럼 지식을 가리지 않고 흡수한다는 의미를 지녔으며, 밝은 회색은 글자 J와 U를 형상화했습니다.</>,
       images: [
         {
-          url: "/images/concept/asdf.png",
-          alt: "JangUniverse 메인 로고",
-          description: "메인 브랜드 로고"
+          url: "/images/concept/Logo_name.png",
+          alt: "Name Logo",
+          description: "Name ver."
         },
         {
-          url: "/images/avatar.jpg",
-          alt: "JangUniverse 프로필",
-          description: "프로필 이미지"
+          url: "/images/concept/Logo_noname.png",
+          alt: "Noname Logo",
+          description: "Noname ver."
         },
         {
-          url: "/images/intro/hshs.png",
-          alt: "학업 관련 이미지",
-          description: "학업 배경"
+          url: "/images/concept/signature.png",
+          alt: "signature",
+          description: "Signature(no legal effect)"
         },
         {
-          url: "/images/intro/kaist.png",
-          alt: "KAIST 관련 이미지",
-          description: "대학 정보"
+          url: "/images/concept/colorbar.png",
+          alt: "colorbar",
+          description: "colorbar for design"
         }
       ]
     }

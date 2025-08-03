@@ -1,8 +1,8 @@
 import {
+  Media,
   Column,
   Flex,
   Heading,
-  Media,
   Text
 } from "@once-ui-system/core";
 import React from "react";
@@ -24,12 +24,14 @@ export default function SelfDescription({ title, nickname, logo, images }: SelfD
   return (
     <Flex fillWidth gap="xl" paddingY="xl" mobileDirection="column">
       {/* 왼쪽: Nickname과 Logo 박스들 */}
-      <Column gap="xl" paddingX="m" align="start" style={{ flex: '1' }}>
+      <Column gap="m" paddingX="m" align="start" style={{ flex: '1' }}>
         {/* Nickname 박스 */}
         <Flex
           radius="m"
           padding="l"
           fillWidth
+          border="neutral-medium"
+          background="surface"
         >
           <Column gap="m" align="start">
             <Heading
@@ -55,6 +57,8 @@ export default function SelfDescription({ title, nickname, logo, images }: SelfD
           radius="m"
           padding="l"
           fillWidth
+          border="neutral-medium"
+          background="surface"
         >
           <Column gap="m" align="start">
             <Heading
@@ -88,12 +92,12 @@ export default function SelfDescription({ title, nickname, logo, images }: SelfD
               <Media
                 src={image.url}
                 alt={image.alt}
-                aspectRatio="1 / 1"
+                aspectRatio="1/1"
                 radius="m"
-                border="neutral-medium"
+                sizes="200px"
                 style={{
-                  width: '100%',
-                  objectFit: 'cover'
+                  width: '200px',
+                  height: '200px'
                 }}
               />
               <Text 
