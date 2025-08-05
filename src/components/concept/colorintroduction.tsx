@@ -11,17 +11,9 @@ import {
   useToast
 } from "@once-ui-system/core";
 
-interface ColorIntroductionProps{
-  name: string;
-  color: string;
-  R: number;
-  G: number;
-  B: number;
-}
-
 interface ColorIntroduction {
   title: string;
-  colors: ColorIntroductionProps[];
+  colors: Record<string, string>; // 객체 형식으로 변경: {"색상명": "#hex값"}
 }
 
 // CMYK 계산 함수
@@ -43,7 +35,7 @@ function rgbToCmyk(r: number, g: number, b: number) {
   };
 }
 
-export default function ColorIntroduction({title, colors}: ColorIntroduction){
+export default function ColorIntroduction({title, colors = {}}: ColorIntroduction){
   const { addToast } = useToast();
   return (
     <Flex direction="column" gap="xl" paddingY="xl" align="center" fillWidth>
@@ -69,17 +61,21 @@ export default function ColorIntroduction({title, colors}: ColorIntroduction){
         </Grid>
         
         {/* 색상 행들 */}
-        {colors.map((color) => {
-          const cmyk = rgbToCmyk(color.R, color.G, color.B);
+        {Object.entries(colors).map(([colorName, hexValue]) => {
+          // 모든 RGB 값을 1로 통일
+          const R = 1;
+          const G = 1;
+          const B = 1;
+          const cmyk = rgbToCmyk(R, G, B);
           
           return (
-            <Grid key={color.name} columns={11} gap="xs" padding="m" border="neutral-medium" radius="m" align="center">
+            <Grid key={colorName} columns={11} gap="xs" padding="m" border="neutral-medium" radius="m" align="center">
               {/* 색상 미리보기 */}
               <div 
                 style={{
                   width: '40px',
                   height: '40px',
-                  backgroundColor: color.color,
+                  backgroundColor: hexValue,
                   borderRadius: '4px',
                   border: '1px solid white',
                   justifySelf: 'center'
@@ -88,23 +84,23 @@ export default function ColorIntroduction({title, colors}: ColorIntroduction){
               
               {/* 색상 이름 */}
               <Text variant="body-default-s" align="center">
-                {color.name}
+                {colorName}
               </Text>
               
-              {/* RGB 값들 */}
+              {/* RGB 값들 - 모두 1로 통일 */}
               <Text variant="body-default-s" align="center">
-                {color.R}
+                {R}
               </Text>
               <Text variant="body-default-s" align="center">
-                {color.G}
+                {G}
               </Text>
               <Text variant="body-default-s" align="center">
-                {color.B}
+                {B}
               </Text>
               
               {/* HEX 값 */}
               <Text variant="body-default-s" align="center">
-                {color.color}
+                {hexValue}
               </Text>
               
               {/* CMYK 값들 */}
@@ -126,7 +122,7 @@ export default function ColorIntroduction({title, colors}: ColorIntroduction){
                 variant="tertiary"
                 size="s"
                 onClick={() => {
-                  navigator.clipboard.writeText(color.color);
+                  navigator.clipboard.writeText(hexValue);
                   addToast({
                     variant: 'success',
                     message: '복사되었습니다!',

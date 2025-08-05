@@ -1,0 +1,314 @@
+// ConnectLink Component SCSS Styles with Context7 support
+
+.connectContainer {
+  width: 100%;
+  margin-bottom: var(--space-lg);
+}
+
+.linkItem {
+  width: 100%;
+  background: var(--neutral-1);
+  border: 1px solid var(--neutral-3);
+  border-radius: 12px;
+  padding: 12px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: var(--space-sm);
+
+  &:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.08);
+    border-color: var(--hover-color, var(--neutral-5));
+
+    .iconContainer {
+      transform: scale(1.05);
+      background: rgba(var(--hover-color-rgb, 99, 102, 241), 0.1);
+    }
+
+    .arrowContainer {
+      transform: translateX(2px);
+      opacity: 1;
+      background: rgba(var(--hover-color-rgb, 99, 102, 241), 0.2);
+    }
+
+    .arrowIcon {
+      color: var(--hover-color, var(--neutral-9));
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px) scale(1.005);
+  }
+}
+
+.linkContent {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex: 1;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.iconContainer {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--neutral-2);
+  border: 1px solid var(--neutral-3);
+  flex-shrink: 0;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.platformInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  flex: 1;
+}
+
+.platformName {
+  color: var(--neutral-12);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.accountInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-xs);
+}
+
+.username {
+  color: var(--neutral-8);
+  font-size: 15px;
+  line-height: 1.2;
+  margin: 0;
+  text-align: right;
+}
+
+.arrowContainer {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--neutral-2);
+  border: 1px solid var(--neutral-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+.arrowIcon {
+  color: var(--neutral-9);
+  opacity: 0.8;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.noLinksMessage {
+  color: var(--neutral-8);
+  text-align: center;
+  padding: var(--space-lg);
+  font-style: italic;
+}
+
+// Context7 tracking class
+.context7Tracked {
+  position: relative;
+  
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  &:hover::after {
+    opacity: 0.05;
+    background: var(--hover-color, var(--neutral-5));
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .linkItem {
+    padding: 10px;
+  }
+
+  .iconContainer {
+    width: 40px;
+    height: 40px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .platformName {
+    font-size: 15px;
+  }
+
+  .username {
+    font-size: 14px;
+  }
+
+  .arrowContainer {
+    width: 28px;
+    height: 28px;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .linkItem {
+    padding: 8px;
+  }
+
+  .leftSection {
+    gap: var(--space-sm);
+  }
+
+  .iconContainer {
+    width: 36px;
+    height: 36px;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .platformName {
+    font-size: 14px;
+  }
+
+  .username {
+    font-size: 13px;
+  }
+
+  .arrowContainer {
+    width: 24px;
+    height: 24px;
+
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+
+// Animation keyframes
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Staggered animation for multiple links - disabled
+.linkItem {
+  animation: none;
+  opacity: 1;
+}
+
+// Focus states for accessibility
+.linkItem:focus-visible {
+  outline: 2px solid var(--primary, var(--neutral-9));
+  outline-offset: 2px;
+}
+
+// Dark mode enhancements
+@media (prefers-color-scheme: dark) {
+  .linkItem {
+    background: var(--neutral-2);
+    border-color: var(--neutral-4);
+
+    &:hover {
+      background: var(--neutral-3);
+      box-shadow: 0 12px 32px rgba(255, 255, 255, 0.1), 0 2px 6px rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  .iconContainer {
+    background-color: var(--neutral-3);
+    border-color: var(--neutral-4);
+  }
+
+  .arrowContainer {
+    background: var(--neutral-3);
+    border-color: var(--neutral-4);
+  }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .linkItem {
+    border-width: 2px;
+  }
+
+  .iconContainer,
+  .arrowContainer {
+    border-width: 2px;
+  }
+
+  .platformName {
+    font-weight: 700;
+  }
+}
+
+// Reduced motion support - already applied globally
+@media (prefers-reduced-motion: reduce) {
+  .linkItem,
+  .iconContainer,
+  .arrowContainer,
+  .arrowIcon {
+    animation: none;
+  }
+
+  .linkItem:hover {
+    transform: none;
+  }
+}

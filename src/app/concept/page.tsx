@@ -12,6 +12,7 @@ import {
 import { person, concept } from "@/resources";
 import SelfDescription from "@/components/concept/selfdescription";
 import ColorIntroduction from "@/components/concept/colorintroduction";
+import ConnectLink from "@/components/concept/connectlink";
 
 export const metadata: Metadata = {
   title: concept.title,
@@ -51,6 +52,17 @@ export default function ConceptPage() {
         <ColorIntroduction 
           title="Colors"
           colors={concept.brandColors}
+        />
+      </RevealFx>
+
+      <RevealFx
+        translateY="4"
+        delay={0.2}
+        style={{ width: '100%' }}
+      >
+        <ConnectLink 
+          title="Link"
+          socialLinks={concept.ConnectLink}
         />
       </RevealFx>
     </Flex>
