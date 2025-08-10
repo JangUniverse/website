@@ -23,7 +23,7 @@ interface ConnectLinkProps {
 }
 
 const getIconForPlatform = (iconName: string) => {
-  const iconMap: { [key: string]: React.ComponentType<{ size?: number; className?: string }> } = {
+  const iconMap: Record<string, React.ComponentType<any>> = {
     github: Github,
     twitter: Twitter,
     x: Twitter, // X uses Twitter icon
@@ -89,10 +89,12 @@ export const ConnectLink: React.FC<ConnectLinkProps> = ({ socialLinks, title = '
                 '--icon-color-dark': colors.dark,
                 '--hover-color': colors.light,
                 '--hover-color-dark': colors.dark
-              } as React.CSSProperties}
+              } as React.CSSProperties & {
+                [key: string]: string;
+              }}
             > 
               <Grid
-                columns= '2'
+                columns={2}
                 gap="m"
                 align="center"
                 className={`${styles.linkContent} context7-link-layout`}
@@ -106,7 +108,9 @@ export const ConnectLink: React.FC<ConnectLinkProps> = ({ socialLinks, title = '
                       style: {
                         '--icon-color-light': colors.light,
                         '--icon-color-dark': colors.dark
-                      } as React.CSSProperties
+                      } as React.CSSProperties & {
+                        [key: string]: string;
+                      }
                     })}
                   </div>
                   <Flex direction="column" gap="xs">
