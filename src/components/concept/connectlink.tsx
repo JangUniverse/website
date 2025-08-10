@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Flex, Text, Grid } from '@once-ui-system/core';
-import { ExternalLink, Github, Twitter, Linkedin, Instagram, Youtube, Twitch, Facebook, Mail, FileText, MessageCircle, Globe } from 'lucide-react';
+import { ExternalLink, Github, Twitter, Linkedin, Instagram, Youtube, Twitch, Facebook, Mail, FileText, MessageCircle, Globe, Code, CodeXml } from 'lucide-react';
 import styles from './connectlink.module.scss';
 
 interface SocialLink {
@@ -14,6 +14,7 @@ interface SocialLink {
   name?: string;
   light?: string;
   dark?: string;
+  icon?: string;
 }
 
 interface ConnectLinkProps {
@@ -21,20 +22,23 @@ interface ConnectLinkProps {
   title?: string;
 }
 
-const getIconForPlatform = (platform: string) => {
+const getIconForPlatform = (iconName: string) => {
   const iconMap: { [key: string]: React.ComponentType<{ size?: number; className?: string }> } = {
     github: Github,
     twitter: Twitter,
+    x: Twitter, // X uses Twitter icon
     linkedin: Linkedin,
     instagram: Instagram,
     youtube: Youtube,
     twitch: Twitch,
     facebook: Facebook,
     email: Mail,
+    at: Mail, // Alternative for email
     blog: FileText,
     discord: MessageCircle,
+    codexml: CodeXml, // Baekjoon OJ uses CodeXml icon
   };
-  return iconMap[platform.toLowerCase()] || Globe;
+  return iconMap[iconName.toLowerCase()] || Globe;
 };
 
 const getColorForPlatform = (): { light: string; dark: string } => {
@@ -69,7 +73,7 @@ export const ConnectLink: React.FC<ConnectLinkProps> = ({ socialLinks, title = '
       <Text variant="heading-strong-l">{title}</Text>
       <div>
         {socialLinks.map((link) => {
-          const IconComponent = getIconForPlatform(link.platform);
+          const IconComponent = getIconForPlatform(link.icon || link.platform);
           // 개별 링크에서 light/dark 속성을 우선 사용, 없으면 기본 색상 사용
           const colors = (link.light && link.dark) 
             ? { light: link.light, dark: link.dark }
@@ -96,7 +100,7 @@ export const ConnectLink: React.FC<ConnectLinkProps> = ({ socialLinks, title = '
                 {/* 왼쪽: 아이콘 + 플랫폼 이름 */}
                 <Flex align="center" gap="m" className="context7-left-section">
                   <div className={`${styles.iconContainer} icon-container context7-icon`}>
-                    {React.createElement(getIconForPlatform(link.platform), {
+                    {React.createElement(getIconForPlatform(link.icon || link.platform), {
                       size: 24,
                       className: styles.platformIcon,
                       style: {

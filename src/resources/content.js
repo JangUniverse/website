@@ -49,7 +49,7 @@ const home = {
   image: "/images/og/home.jpg",
   label: "홈",
   title: `${person.name}`,
-  description: `${person.name}'s personal website`,
+  description: `${person.name}의 웹사이트입니다`,
   headline: (
     <>
       Life is a tree,
@@ -79,7 +79,7 @@ const about = {
   path: "/about",
   label: "소개",
   title: `About – ${person.name}`,
-  description: `about ${person.name}, ${person.role}`,
+  description: `${person.name}의 소개 글`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -304,8 +304,8 @@ const about = {
 const blog = {
   path: "/blog",
   label: "블로그",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
+  title: `Blog- ${person.name}`,
+  description: `${person.name}이 가끔씩 글을 작성하는 장소입니다.`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
 };
@@ -314,7 +314,7 @@ const work = {
   path: "/work",
   label: "작업",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
+  description: `${person.name}이 작업한 내용을 담아두는 곳입니다.`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
 };
@@ -374,7 +374,7 @@ const concept = {
   path: "/concept",
   label: "컨셉",
   title: `Concept – ${person.name}`,
-  description: `${person.name}'s concept`,
+  description: `${person.name}이 고안한 컨셉입니다.`,
 
   // 브랜드 컬러
   brandColors: {
@@ -387,32 +387,44 @@ const concept = {
   // SNS 링크
   ConnectLink: [
     {
-      platform: "Github",
-      username: "JangUniverse",
-      url: "https://github.com/JangUniverse",
-      light: "#24292E",
-      dark: "#FAFBFC"
+      platform: "Baekjoon OJ",
+      icon: "codexml",
+      username: "janguniverse",
+      url: "https://www.acmicpc.net/user/janguniverse",
+      light: "#0076c0",
+      dark: "#4da6ff"
     },
     {
       platform: "Email",
+      icon: "at",
       username: "me@JangUniverse.dev",
       url: "mailto:me@JangUniverse.dev",
-      light: "#ea4335",
-      dark: "#ff5722"
+      light: "#6b9080",
+      dark: "#8fbc8f"
     },
     {
+       platform: "Instagram",
+       icon: "instagram",
+       username: "janguniverse_dev",
+       url: "https://janguniverse.dev/blog",
+       light: "#E4405F",
+       dark: "#FD5949"
+     },
+    {
       platform: "LinkedIn",
-      username: "우주 장",
+      icon: "linkedIn",
+      username: "WooJoo (Universe) Jang",
       url: "https://linkedin.com/in/janguniverse",
       light: "#0077b5",
       dark: "#00a0dc"
      },
      {
-       platform: "Blog",
-       username: "JangUniverse Blog",
-       url: "https://janguniverse.dev/blog",
-       light: "#0F193B",
-       dark: "#8C8C8C"
+       platform: "X",
+       icon: "x",
+       username: "JangUniverse_",
+       url: "https://x.com/JangUniverse_",
+       light: "#000000",
+       dark: "#ffffff"
      },
    ],
 
@@ -421,9 +433,9 @@ const concept = {
      title: "JangUniverse",
      nickname: (
        <>
-         JangUniverse는 제 이름 장우주에서 따 왔습니다. <br />
-         우주가 영어로 Universe이고, Universe라는 글자가 주는 무한함이 인상깊어 해당 닉네임을 사용하였습니다. <br />
-         많은 사람이 제 이름을 처음 들으면 이 단어를 생각하게 되어, 닉네임으로 정한 것도 있습니다.
+         JangUniverse는 제 이름 ‘장우주’에서 따온 닉네임입니다. <br />
+         ‘우주’는 영어로 Universe이고, 그 단어가 주는 무한함의 의미가 인상 깊어 사용하게 되었습니다. <br />
+         또한, 제 이름을 처음 듣는 많은 분이 자연스럽게 이 단어를 떠올리기에 닉네임으로 정하게 되었습니다.
        </>
      ),
      logo: (
