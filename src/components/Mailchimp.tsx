@@ -9,8 +9,8 @@ import { useState } from "react";
 
 type NewsletterProps = {
   display: boolean;
-  title: string | JSX.Element;
-  description: string | JSX.Element;
+  title: string | React.ReactNode;
+  description: string | React.ReactNode;
 };
 
 export const Mailchimp = ({ newsletter }: { newsletter: NewsletterProps }) => {
