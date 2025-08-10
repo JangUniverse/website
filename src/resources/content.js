@@ -58,7 +58,7 @@ const home = {
     </>
   ),
   featured: {
-    display: true,
+    display: false,
     title: (
       <>
         Recent project:{" "}
@@ -381,17 +381,17 @@ const concept = {
     "JangUniverse Black": "#030303",
     "JangUniverse Blue": "#0F193B",
     "JangUniverse Gray": "#8C8C8C",
-    "JangUniverse Pale": "#DDD8D8",
+    "JangUniverse Pale": "#D8D8D8",
   
   },
   // SNS 링크
   ConnectLink: [
     {
-      platform: "GitHub",
+      platform: "Github",
       username: "JangUniverse",
       url: "https://github.com/JangUniverse",
-      light: "#ffffff",
-      dark: "#000000"
+      light: "#24292E",
+      dark: "#FAFBFC"
     },
     {
       platform: "Email",

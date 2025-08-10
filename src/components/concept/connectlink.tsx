@@ -1,12 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Flex, Text, Icon, Grid } from '@once-ui-system/core';
-import {
-  Github, Twitter, Linkedin, Instagram, Youtube,
-  Twitch, Facebook, Globe, Mail, MessageCircle,
-  FileText, ExternalLink
-} from 'lucide-react';
+import { Flex, Text, Grid } from '@once-ui-system/core';
+import { ExternalLink, Github, Twitter, Linkedin, Instagram, Youtube, Twitch, Facebook, Mail, FileText, MessageCircle, Globe } from 'lucide-react';
 import styles from './connectlink.module.scss';
 
 interface SocialLink {
@@ -26,7 +22,7 @@ interface ConnectLinkProps {
 }
 
 const getIconForPlatform = (platform: string) => {
-  const iconMap: { [key: string]: React.ComponentType } = {
+  const iconMap: { [key: string]: React.ComponentType<{ size?: number; className?: string }> } = {
     github: Github,
     twitter: Twitter,
     linkedin: Linkedin,
@@ -101,7 +97,12 @@ export const ConnectLink: React.FC<ConnectLinkProps> = ({ socialLinks, title = '
                 <Flex align="center" gap="m" className="context7-left-section">
                   <div className={`${styles.iconContainer} icon-container context7-icon`}>
                     {React.createElement(getIconForPlatform(link.platform), {
-                      className: styles.platformIcon
+                      size: 24,
+                      className: styles.platformIcon,
+                      style: {
+                        '--icon-color-light': colors.light,
+                        '--icon-color-dark': colors.dark
+                      } as React.CSSProperties
                     })}
                   </div>
                   <Flex direction="column" gap="xs">
@@ -115,7 +116,7 @@ export const ConnectLink: React.FC<ConnectLinkProps> = ({ socialLinks, title = '
                 </Flex>
 
                 {/* 오른쪽: 계정명 + 화살표 */}
-                <Flex align="center" gap="m" justify="flex-end" className="context7-right-section">
+                <Flex align="center" gap="m" className="context7-right-section">
                   <Text
                     variant="body-default-m"
                     className={`${styles.username} context7-username`}

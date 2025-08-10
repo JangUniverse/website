@@ -10,10 +10,21 @@ import {
   Button,
   useToast
 } from "@once-ui-system/core";
+import styles from "./colorintroduction.module.scss";
 
 interface ColorIntroduction {
   title: string;
   colors: Record<string, string>; // 객체 형식으로 변경: {"색상명": "#hex값"}
+}
+
+// HEX를 RGB로 변환하는 함수
+function hexToRgb(hex: string) {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
 }
 
 // CMYK 계산 함수
@@ -37,8 +48,20 @@ function rgbToCmyk(r: number, g: number, b: number) {
 
 export default function ColorIntroduction({title, colors = {}}: ColorIntroduction){
   const { addToast } = useToast();
+  
+  const handleRowClick = (colorName: string, hexValue: string) => {
+    // Context7 추적 (connectlink와 동일한 패턴)
+    if (typeof window !== 'undefined' && (window as any).context7) {
+      (window as any).context7.track('color_row_click', {
+        colorName,
+        hexValue,
+        timestamp: new Date().toISOString()
+      });
+    }
+  };
+  
   return (
-    <Flex direction="column" gap="xl" paddingY="xl" align="center" fillWidth>
+    <Flex direction="column" gap="xl" paddingY="xl" align="center" fillWidth className={`${styles.colorContainer} context7`}>
       <Heading as="h2" variant="heading-strong-xl" align="center">
         {title}
       </Heading>
@@ -46,7 +69,7 @@ export default function ColorIntroduction({title, colors = {}}: ColorIntroductio
       {/* 색상 팔레트 테이블 */}
       <Flex direction="column" gap="m" align="center" fillWidth>
         {/* 헤더 */}
-        <Grid columns={11} gap="xs" padding="m" background="surface" border="neutral-medium" radius="m" align="center">
+        <Grid columns={11} gap="xs" className={styles.headerRow} align="center">
           <Text variant="body-strong-s" align="center">Color</Text>
           <Text variant="body-strong-s" align="center">Name</Text>
           <Text variant="body-strong-s" align="center">R</Text>
@@ -62,24 +85,30 @@ export default function ColorIntroduction({title, colors = {}}: ColorIntroductio
         
         {/* 색상 행들 */}
         {Object.entries(colors).map(([colorName, hexValue]) => {
-          // 모든 RGB 값을 1로 통일
-          const R = 1;
-          const G = 1;
-          const B = 1;
+          // HEX에서 RGB 값 추출
+          const rgbValues = hexToRgb(hexValue);
+          const R = rgbValues ? rgbValues.r : 0;
+          const G = rgbValues ? rgbValues.g : 0;
+          const B = rgbValues ? rgbValues.b : 0;
           const cmyk = rgbToCmyk(R, G, B);
           
           return (
-            <Grid key={colorName} columns={11} gap="xs" padding="m" border="neutral-medium" radius="m" align="center">
+            <Grid 
+              key={colorName} 
+              columns={11} 
+              gap="xs" 
+              className={`${styles.colorRow} ${styles.context7Tracked} context7-color-row`}
+              align="center"
+              onClick={() => handleRowClick(colorName, hexValue)}
+            >
               {/* 색상 미리보기 */}
               <div 
+                className={styles.colorPreview}
                 style={{
-                  width: '40px',
-                  height: '40px',
                   backgroundColor: hexValue,
-                  borderRadius: '4px',
-                  border: '1px solid white',
-                  justifySelf: 'center'
-                }}
+                  '--hover-color': hexValue,
+                  '--hover-color-rgb': `${R}, ${G}, ${B}`
+                } as React.CSSProperties}
               />
               
               {/* 색상 이름 */}
@@ -87,7 +116,7 @@ export default function ColorIntroduction({title, colors = {}}: ColorIntroductio
                 {colorName}
               </Text>
               
-              {/* RGB 값들 - 모두 1로 통일 */}
+              {/* RGB 값들 */}
               <Text variant="body-default-s" align="center">
                 {R}
               </Text>
@@ -121,21 +150,31 @@ export default function ColorIntroduction({title, colors = {}}: ColorIntroductio
               <Button
                 variant="tertiary"
                 size="s"
-                onClick={() => {
-                  navigator.clipboard.writeText(hexValue);
-                  addToast({
-                    variant: 'success',
-                    message: '복사되었습니다!',
+                className={`${styles.copyButton} context7-copy`}
+                onClick={async (e: React.MouseEvent<HTMLButtonElement>) => {
+                  e.stopPropagation(); // 행 클릭 이벤트 방지
+                  try {
+                    await navigator.clipboard.writeText(hexValue);
+                    addToast({
+                      variant: 'success',
+                      message: '복사되었습니다!'
+                    });
                     
-                  });
-                }}
-                style={{ 
-                  border: 'none', 
-                  background: 'transparent',
-                  padding: '4px',
-                  minWidth: 'auto',
-                  height: 'auto',
-                  justifySelf: 'center'
+                    // Context7 추적
+                    if (typeof window !== 'undefined' && (window as any).context7) {
+                      (window as any).context7.track('color_copy', {
+                        colorName,
+                        hexValue,
+                        timestamp: new Date().toISOString()
+                      });
+                    }
+                  } catch (error) {
+                    console.error('클립보드 복사 실패:', error);
+                    addToast({
+                      variant: 'danger',
+                      message: '복사에 실패했습니다.'
+                    });
+                  }
                 }}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
